@@ -1,49 +1,83 @@
 import { useState, useEffect} from 'react'
 import './App.css'
 import SideNav from "../src/Components/SideNav"
-import Card from "../src/Components/Card"
+// import Card from './Components/Card';
 const API_KEY = import.meta.env.VITE_APP_API_KEY;
 
 function App() {
     
   const[list, setList] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
     useEffect(() => {
       const fetchAllRecipesData = async() => {
-        let query = `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=2&tags=dessert`
+        let query = `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=10&tags=dessert`
         const response = await fetch(query);
         const json = await response.json();
 
         setList(json.recipes);
         console.log(json.recipes);
 
-        console.log("hi")
-        console.log(list)
+       
       };
 
       fetchAllRecipesData().catch(console.error);
-     
+      console.log("in app.jsx show me")
+        console.log(list)
    // Send it to the compare function here: 
    // Save it to another list
     },[]);
 
+    const searchItems = searchValue => {
+      setSearchInput(searchValue);
+  
+      if(searchValue!== ""){
+        const filteredData = list.filter((title) =>
+        Object.values(title)
+        .join("")
+        .toLowerCase()
+        .includes(searchValue.toLowerCase())
+        )
+  
+        setFilteredResults(filteredData)
+      } else {
+        setFilteredResults(Object.keys(list));
+      }
+    };
 
   return (
     <div className="container">
      <SideNav />
-     <Card list = {list}/>
+     {/* {list.length > 0 ? <Card list = {list}/> : <p>Loading</p>} */}
       <div className='content'>
-      {list.map((recipe) => (
+        <input 
+        type = "text"
+        placeholder="Search food!"
+        onChange = {(inputString) => searchItems(inputString.target.value)}
+        />
+
+      {searchInput.length > 0 ? 
+        filteredResults.map((recipe) => 
         <div key = {recipe.id}>
           <h3>{recipe.title}</h3>
           <img src = {recipe.image} alt = {recipe.title}/>
-          <p>{recipe.summary}</p>
-          </div>
-      ))}
+          <p>{recipe.vegetarian? "Vegetarian": "Not vegetarian"}</p>
+          <p>Ready in minutes: {recipe.readyInMinutes}</p>
+        </div> 
+     )
+      : list.map((recipe) => 
+        <div key = {recipe.id}>
+          <h3>{recipe.title}</h3>
+          <img src = {recipe.image} alt = {recipe.title}/>
+          <p>{recipe.vegetarian? "Vegetarian": "Not vegetarian"}</p>
+          <p>Ready in minutes: {recipe.readyInMinutes}</p>
+          </div> 
+      )}
 
+        </div>
       </div>
-    </div>
-  )
-}
+      )
+    } 
 
 export default App
