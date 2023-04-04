@@ -2,6 +2,7 @@ import { useState, useEffect} from 'react'
 import './App.css'
 import SideNav from "../src/Components/SideNav"
 // import Card from './Components/Card';
+import Recipe from "./Components/Recipe"
 const API_KEY = import.meta.env.VITE_APP_API_KEY;
 
 function App() {
@@ -59,20 +60,22 @@ function App() {
 
       {searchInput.length > 0 ? 
         filteredResults.map((recipe) => 
-        <div key = {recipe.id}>
-          <h3>{recipe.title}</h3>
-          <img src = {recipe.image} alt = {recipe.title}/>
-          <p>{recipe.vegetarian? "Vegetarian": "Not vegetarian"}</p>
-          <p>Ready in minutes: {recipe.readyInMinutes}</p>
-        </div> 
+        <Recipe 
+          id = {recipe.id}
+          title = {recipe.title}
+          image = {recipe.image} 
+          vegetarian = {recipe.vegetarian}
+          minutes = {recipe.readyInMinutes}
+        />
      )
       : list.map((recipe) => 
-        <div key = {recipe.id}>
-          <h3>{recipe.title}</h3>
-          <img src = {recipe.image} alt = {recipe.title}/>
-          <p>{recipe.vegetarian? "Vegetarian": "Not vegetarian"}</p>
-          <p>Ready in minutes: {recipe.readyInMinutes}</p>
-          </div> 
+        <Recipe 
+        id = {recipe.id}
+        title = {recipe.title}
+        image = {recipe.image} 
+        vegetarian = {recipe.vegetarian}
+        minutes = {recipe.readyInMinutes}
+      />
       )}
 
         </div>

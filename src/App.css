@@ -27,3 +27,15 @@
   flex:1;
   padding:15px;
 }
+
+Link:hover{
+  color:#f0f8ff;
+}
+
+.recipe_title:hover{
+  color:#f0f8ff;
+}
+
+li{
+  list-style:none;
+}

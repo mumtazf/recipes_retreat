@@ -1,27 +1,25 @@
-# Web Development Project 5 - *Recipes Retreat*
+# Web Development Project 6 - Desserts Retreat
 
 Submitted by: **Mumtaz Fatima**
 
-This web app: **Filters delicious desserts for you**
+This web app: displays a variety of desserts and its preparation time.
 
-Time spent: **11** hours spent in total
+Time spent: **8** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [x] **The list displays a list of data fetched using an API call**
-- [x] **Data uses the useEffect React hook and async/await syntax**
-- [ ] **The app dashboard includes at least three summary statistics about the data such as**
-  - [ ] *insert details*
-- [x] **A search bar allows the user to search for an item in the fetched data**
-- [x] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
+- [x] **Clicking on an item in the list view displays more details about it**
+- [x] **Clicking on an item has a direct, unique link to that item's detail view page**
+- [ ] **The app includes at least two unique chart developed using the fetched data that tell an interesting story** (in progress)
+
+
 
 The following **optional** features are implemented:
 
-- [ ] Multiple filters can be applied simultaneously
-- [ ] Filters use different input types such as a text input, a selection, or a slider
-- [ ] The user can enter specific bounds for filter values
+- [ ] The site's customized dashboard contains more content that explains what is interesting about the data
+- [ ] The site allows users to toggle between different data visualizations
 
 The following **additional** features are implemented:
 
@@ -31,15 +29,16 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/mumtazf/recipes_retreat/blob/master/src/assets/demo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 ## Notes
-Struggled with summary statistics aspect of the program. 
+
+Data descriptives have been a little challenging for me to navigate especially with a react component.
 
 ## License
 
-    Copyright [2023] [Mumtaz]
+    Copyright [2023] [Mumtaz Fatima]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
